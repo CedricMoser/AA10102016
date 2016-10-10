@@ -3,9 +3,58 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title> Hallo :) </title>
+		<title> Kostenabschätzung </title>
 	</head>
 	
 	<body>
+		<div>
+			<form action="" method="POST">
+				<table>
+					<tr>
+						<td> Fläche je Stockwerk in qm: </td>
+						<td> <input type="text" name="FlaecheStockwerk" /> </td>
+					</tr>
+					
+					<tr>
+						<td> Stockwerkshöhe in m: </td>
+						<td> <input type="text" name="Stockwerkshoehe" /> </td>
+					</tr>
+					
+					<tr>
+						<td> Anzahl Stockwerke </td>
+						<td> <input type="text" name="AnzahlStockwerke" /> </td>
+					</tr>
+				</table>
+				
+				<br />
+				
+				<fieldset style="max-width: 400px;">
+					<legend> Baujahr des Sanierungsobjekts / letzte Sanierung </legend>
+				
+					<input type="radio" id="1950" name="Jahr" value="1" />
+					<label for="1950"> vor 1950 </label>
+					<br />
+					
+					<input type="radio" id="1977" name="Jahr" value="2" />
+					<label for="1977"> vor 1977 </label>
+					<br />
+					
+					<input type="radio" id="1987" name="Jahr" value="3" />
+					<label for="1987"> vor 1987 </label>
+					<br />
+					
+					<input type="radio" id="1998" name="Jahr" value="4" />
+					<label for="1998"> vor 1998 </label>
+					<br />
+					
+					<input type="radio" id="2002" name="Jahr" value="5" />
+					<label for="2002"> vor 2002 </label>
+					<br />
+					
+					<input type="radio" id="2009" name="Jahr" value="6" />
+					<label for="2009"> vor 2009 </label>
+				</fieldset>
+			</form>
+		</div>
 	</body>
 </html>
