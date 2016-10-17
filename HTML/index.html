@@ -2,61 +2,97 @@
 
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8" />
 		<title> Kostenabschätzung </title>
+		
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css" />
+		
+		<script>
+			function OnlyNumber( e ) {
+				if ( e.charCode != 0 && !( e.charCode >= 48 && e.charCode <= 57 ) ) {
+					e.preventDefault();
+				}
+			}
+		
+			function Onload() {
+				document.getElementById( "FlaecheStockwerk" ).addEventListener( "keypress", OnlyNumber );
+				document.getElementById( "Stockwerkshoehe"  ).addEventListener( "keypress", OnlyNumber );
+				document.getElementById( "AnzahlStockwerke" ).addEventListener( "keypress", OnlyNumber );
+			}
+		
+			function FocusFirstNumberInput() {
+				document.getElementById( "FlaecheStockwerk" ).focus();
+			}
+		</script>
 	</head>
 	
-	<body>
-		<form action="" method="POST" style="max-width: 400px;">
-			<table style="float: right;">
-				<tr>
-					<td> Fläche je Stockwerk in qm: </td>
-					<td> <input type="text" name="FlaecheStockwerk" /> </td>
-				</tr>
-				
-				<tr>
-					<td> Stockwerkshöhe in m: </td>
-					<td> <input type="text" name="Stockwerkshoehe" /> </td>
-				</tr>
-				
-				<tr>
-					<td> Anzahl Stockwerke </td>
-					<td> <input type="text" name="AnzahlStockwerke" /> </td>
-				</tr>
-			</table>
-			
-			<p style="clear: both;"></p>
-			<br />
-			
-			<fieldset style="max-width: 400px;">
-				<legend> Baujahr des Sanierungsobjekts / letzte Sanierung </legend>
-			
-				<input type="radio" id="1950" name="Jahr" value="1" />
-				<label for="1950"> vor 1950 </label>
-				<br />
-				
-				<input type="radio" id="1977" name="Jahr" value="2" />
-				<label for="1977"> vor 1977 </label>
-				<br />
-				
-				<input type="radio" id="1987" name="Jahr" value="3" />
-				<label for="1987"> vor 1987 </label>
-				<br />
-				
-				<input type="radio" id="1998" name="Jahr" value="4" />
-				<label for="1998"> vor 1998 </label>
-				<br />
-				
-				<input type="radio" id="2002" name="Jahr" value="5" />
-				<label for="2002"> vor 2002 </label>
-				<br />
-				
-				<input type="radio" id="2009" name="Jahr" value="6" />
-				<label for="2009"> vor 2009 </label>
-			</fieldset>
-			
-			<input type="submit" value="Absenden" />
-			<input type="reset"  value="Zurücksetzten" />
-		</form>
+	<body onload="Onload(); FocusFirstNumberInput();">
+		<div class="panel panel-default" style="max-width: 1000px; margin: 20px auto;">
+			<div class="panel-heading">
+				<h1> Kostenabschätzung </h1>
+			</div>
+		
+			<div class="container panel-body" style="max-width: 1000px;">
+				<form action="../PHP/Kosten.php" method="POST" class="form-horizontal">
+					<div class="form-group">
+						<label for="FlaecheStockwerk" class="col-sm-3 control-label"> Fläche je Stockwerk in qm: </label>
+						
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="FlaecheStockwerk" id="FlaecheStockwerk" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="Stockwerkshoehe" class="col-sm-3 control-label"> Stockwerkshöhe in m: </label>
+						
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="Stockwerkshoehe" id="Stockwerkshoehe" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="AnzahlStockwerke" class="col-sm-3 control-label"> Anzahl Stockwerke </label>
+						
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="AnzahlStockwerke" id="AnzahlStockwerke" />
+						</div>
+					</div>
+					
+					<br />
+					
+					<fieldset>
+						<legend> Baujahr des Sanierungsobjekts / letzte Sanierung </legend>
+					
+						<input type="radio" id="1950" name="Jahr" value="1" checked />
+						<label for="1950"> vor 1950 </label>
+						<br />
+						
+						<input type="radio" id="1977" name="Jahr" value="2" />
+						<label for="1977"> vor 1977 </label>
+						<br />
+						
+						<input type="radio" id="1987" name="Jahr" value="3" />
+						<label for="1987"> vor 1987 </label>
+						<br />
+						
+						<input type="radio" id="1998" name="Jahr" value="4" />
+						<label for="1998"> vor 1998 </label>
+						<br />
+						
+						<input type="radio" id="2002" name="Jahr" value="5" />
+						<label for="2002"> vor 2002 </label>
+						<br />
+						
+						<input type="radio" id="2009" name="Jahr" value="6" />
+						<label for="2009"> vor 2009 </label>
+					</fieldset>
+					
+					<br />
+					
+					<input type="submit" value="Absenden" class="btn btn-primary" />
+					<input type="reset"  value="Zurücksetzten" onclick="FocusFirstNumberInput()" class="btn btn-default" />
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
